@@ -1,0 +1,7 @@
+Flask
+flask_oauthlib
+faunadb
+requests
+Pillow
+rembg
+gunicorn

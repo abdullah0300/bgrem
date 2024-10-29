@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Background Remover</title>
+</head>
+<body>
+    <h2>Select a Collection to Start Background Removal</h2>
+    <div id="collections"></div>
+    <button onclick="startRemoval()">Start Removal</button>
+    <div id="progress">Progress: <span id="progress-percentage">0%</span></div>
+    <script>
+        async function loadCollections() {
+            const res = await fetch('/collections');
+            const data = await res.json();
+            document.getElementById('collections').innerHTML = JSON.stringify(data);
+        }
+
+        function startRemoval() {
+            // AJAX call to start /remove_background
+            fetch('/remove_background', {method: 'POST', headers: {'Content-Type': 'application/json'}})
+            .then(response => response.json())
+            .then(data => document.getElementById('progress').innerText = 'Background removal complete.');
+        }
+
+        loadCollections();
+    </script>
+</body>
+</html>
