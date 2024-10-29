@@ -1,5 +1,5 @@
 Flask
-flask_oauthlib
+authlib
 faunadb
 requests
 Pillow
