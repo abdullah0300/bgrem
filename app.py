@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, session, jsonify, render_template
 from authlib.integrations.flask_client import OAuth
 from faunadb import query as q
 from faunadb.client import FaunaClient
+import os
 import requests
 import io
 from PIL import Image
@@ -106,4 +107,5 @@ def remove_background():
     return jsonify({'status': 'Background removal complete.'})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
